@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Painting</title>
+</head>
+<body>
+    <style>
+        *{
+            background-color:mediumseagreen;
+            color:aliceblue;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .table{
+            width: 50%;
+            height: auto;
+            border: 4px solid brown ;
+            font-size: large;
+            color:indigo;
+        }
+
+        
+    </style>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout">Logout</a>
+    <h1>Add a New Painting</h1>
+    <div class = 'table'>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    <form action ='/create/painting' method ='POST'>
+        Title:<input type='text' name='title'><br>
+        Description:<textarea name='description'></textarea><br>
+        Price:<input type='price' name='price'><br>
+        <input type ='submit'>
+    </div>
+    <a href ='/new/painting'>Add a Painting</a>
+    </form>
+</body>
+</html>
