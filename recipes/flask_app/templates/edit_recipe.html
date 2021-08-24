@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+</head>
+<body>
+    <body>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+        <h1>Edit Recipe!</h1>
+        <form action ='/recipes/{{recipes[0].id}}/update' method ='POST'>
+            Name:<input type='text' name='name' value='{{recipes[0].name}}'><br>
+            Description:<textarea name='description'>{{recipes[0].description}}
+    
+            </textarea><br>
+            Instructions:<textarea name='instruction'>{{recipes[0].instruction}}
+    
+            </textarea><br>
+            Date Made On:<input type='date' name='date' value='{{recipes[0].date}}'><br>
+            Under 30 minutes?
+                {% if recipes[0].timing == '1' %}
+                    <input type ="radio" name='timing' value='1'>Yes
+                    <input type ="radio" name='timing' value='0'>No<br>
+                {% else %}
+                    <input type ="radio" name='timing' value='0'>Yes
+                    <input type ="radio" name='timing' value='1'>No<br>
+                {% endif %}
+            <input type ='submit'>
+        </form>
+    </body>
+</body>
+</html>

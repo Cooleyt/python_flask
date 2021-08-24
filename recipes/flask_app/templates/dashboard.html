@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{session['first_name']}}!</h1>
+    <p>These are your recipes:</p>  
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Under 30 Minutes?</th>
+            <th>Submitter</th>
+            <th>Actions</th>
+        </tr>
+        
+        {% for recipe in recipes %}
+        <tr>
+            <td>{{recipe.name}}</td>
+            {% if recipe.timing == 1 %}
+            <td>Yes</td>
+            {% else %}
+            <td>No</td>
+            {% endif %}
+            <td>{{recipe.user.firstname}} {{recipe.user.lastname}}</td>
+            <td>
+                <a href="/recipes/{{recipe.id}}">Show</a>
+                {% if recipe.user.id == session['user_id'] %}
+                <a href="/recipe/{{recipe.id}}/edit">Edit</a>
+                <a href="/recipe/{{recipe.id}}/delete">Delete</a>
+                {% endif %}
+            </td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+    <a href ='/create/recipe'>Create a new recipe</a>
+</body>
+</html>
